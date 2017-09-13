@@ -30,4 +30,17 @@ class ActivityTest < Minitest::Test
     assert_equal 75, activity.total_cost
   end
 
+  def test_it_can_find_average_cost_of_activity
+    activity = Activity.new("fishing", {'Steve' => 25, 'Alejandra' => 24, 'Amy' => 26})
+    assert_equal 25, activity.cost_per_person
+  end
+
+  def test_it_can_find_out_how_much_each_person_owes
+    activity = Activity.new("fishing", {'Steve' => 25, 'Alejandra' => 24, 'Amy' => 26})
+
+    assert_equal -1, activity.amount_owed('Amy')
+    assert_equal 1, activity.amount_owed('Alejandra')
+    assert_equal 0, activity.amount_owed('Steve')
+  end
+
 end
