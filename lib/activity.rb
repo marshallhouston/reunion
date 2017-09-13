@@ -2,7 +2,7 @@ class Activity
 attr_reader :name, :participants
 
 
-  def initialize(name, participant)
+  def initialize(name, participant={})
     @name = name
     @participants = {}
       participant.each do |k,v|
